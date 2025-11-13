@@ -1,0 +1,5 @@
+{
+  "name": "Tidewave Web Clone",
+  "description": "A fully functional replica of the Tidewave AI website, a coding agent for full-stack web app development. This clone showcases the landing page and the installation guide, built with React, TypeScript, and Tailwind CSS.",
+  "requestFramePermissions": []
+}
