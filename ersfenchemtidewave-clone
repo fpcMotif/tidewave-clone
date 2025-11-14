@@ -1,0 +1,98 @@
+[1mdiff --git a/pages/HomePage.tsx b/pages/HomePage.tsx[m
+[1mindex 942bd09..51210f4 100644[m
+[1m--- a/pages/HomePage.tsx[m
+[1m+++ b/pages/HomePage.tsx[m
+[36m@@ -6,11 +6,11 @@[m [mconst FaqItem: React.FC<{ title: string; children: React.ReactNode }> = ({ title[m
+     const [isOpen, setIsOpen] = useState(false);[m
+     return ([m
+         <div className="border-b border-border">[m
+[31m-            <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left py-4">[m
+[32m+[m[32m            <button type="button" onClick={() => setIsOpen(!isOpen)} className="w-full text-left py-4">[m
+                 <div className="flex items-center justify-between gap-4">[m
+                     <h3 className="font-medium sm:text-xl text-foreground">{title}</h3>[m
+                     <span className={`transform transition-transform duration-200 ${isOpen ? 'rotate-45' : 'rotate-0'}`}>[m
+[31m-                        <svg className="w-6 h-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>[m
+[32m+[m[32m                        <svg className="w-6 h-6 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><title>Expand</title><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>[m
+                     </span>[m
+                 </div>[m
+             </button>[m
+[36m@@ -52,8 +52,16 @@[m [mconst VideoPlayer: React.FC<{ poster: string, webm: string, mp4: string }> = ({[m
+     }, []);[m
+ [m
+     return ([m
+[31m-         <div ref={containerRef} className="relative group transition-all duration-500 ease-out">[m
+[31m-            <video ref={videoRef} className="w-[480px] h-[270px] object-cover rounded-lg" poster={poster} muted loop playsInline preload="metadata">[m
+[32m+[m[32m        <div ref={containerRef} className="relative group overflow-hidden rounded-lg shadow-lg">[m
+[32m+[m[32m            <video[m
+[32m+[m[32m                ref={videoRef}[m
+[32m+[m[32m                className="w-full max-w-[480px] h-auto aspect-video object-cover rounded-lg"[m
+[32m+[m[32m                poster={poster}[m
+[32m+[m[32m                muted[m
+[32m+[m[32m                loop[m
+[32m+[m[32m                playsInline[m
+[32m+[m[32m                preload="metadata"[m
+[32m+[m[32m            >[m
+                 <source src={webm} type="video/webm" />[m
+                 <source src={mp4} type="video/mp4" />[m
+             </video>[m
+[36m@@ -73,11 +81,13 @@[m [mconst HomePage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {[m
+     }[m
+ [m
+     return ([m
+[31m-        <div className="overflow-x-hidden">[m
+[31m-            <div className="relative">[m
+[32m+[m[32m        <div className="w-full overflow-x-hidden">[m
+[32m+[m[32m            {/* Hero Section */}[m
+[32m+[m[32m            <div className="relative w-full">[m
+                 <div className="absolute inset-0 -top-2 h-[1600px] w-full bg-hero [background-size:200%_60%] sm:[background-size:100%_100%] opacity-20"></div>[m
+[31m-                <div className="relative z-10 container mx-auto px-4 py-28">[m
+[31m-                    <div className="flex flex-col items-center">[m
+[32m+[m[32m                <div className="relative z-10">[m
+[32m+[m[32m                    <div className="container mx-auto px-4 py-28">[m
+[32m+[m[32m                        <div className="flex flex-col items-center">[m
+                         <div className={`mt-8 max-w-[700px] ${getTransitionClasses()}`}>[m
+                             <h1 className="text-center text-3xl leading-tight font-bold md:text-5xl text-foreground">[m
+                                 The coding agent for&nbsp;[m
+[36m@@ -101,9 +111,9 @@[m [mconst HomePage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {[m
+                             </a>[m
+                         </div>[m
+ [m
+[31m-                        <div className="mt-8 xl:mt-12 relative lg:w-[800px] mx-auto z-10" onClick={() => setShowVideoModal(true)}>[m
+[31m-                            <img src="https://tidewave.ai/images/landing/hero-be2d98514121f33e53fdbd4d2b10d70a.jpeg" className="rounded-lg sm:rounded-2xl" alt="Introducing Tidewave Web" loading="lazy" />[m
+[31m-                            <div className="absolute inset-0 bg-gray-900/30 rounded-lg sm:rounded-2xl flex justify-center items-center group cursor-pointer">[m
+[32m+[m[32m                            <button type="button" className="mt-8 xl:mt-12 relative lg:w-[800px] mx-auto z-10 block w-full border-0 bg-transparent p-0 cursor-pointer group overflow-hidden rounded-lg sm:rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300" onClick={() => setShowVideoModal(true)}>[m
+[32m+[m[32m                                <img src="https://tidewave.ai/images/landing/hero-be2d98514121f33e53fdbd4d2b10d70a.jpeg" className="w-full h-auto rounded-lg sm:rounded-2xl" alt="Introducing Tidewave Web" loading="lazy" />[m
+[32m+[m[32m                                <div className="absolute inset-0 bg-gray-900/30 rounded-lg sm:rounded-2xl flex justify-center items-center cursor-pointer">[m
+                                 <div className="group-hover:scale-110 flex justify-center items-center absolute z-10 transition-transform">[m
+                                     <RiPlayFill className="size-10 absolute z-10 text-primary-foreground" />[m
+                                     <div className="absolute rounded-full w-20 h-20 bg-primary"></div>[m
+[36m@@ -124,84 +134,90 @@[m [mconst HomePage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {[m
+                                   </div>[m
+                                 </div>[m
+                             </div>[m
+[32m+[m[32m                            </button>[m
+                         </div>[m
+                     </div>[m
+                 </div>[m
+             </div>[m
+ [m
+[31m-            <div id="features" className="relative container mx-auto px-4 max-w-7xl">[m
+[32m+[m[32m            {/* Features Section */}[m
+[32m+[m[32m            <section id="features" className="w-full bg-background">[m
+[32m+[m[32m                <div className="container mx-auto px-4 max-w-7xl">[m
+                 <div className="text-center z-10 py-8 md:py-12 xl:py-16 2xl:py-20">[m
+                     <h2 className="text-3xl font-semibold text-foreground">Features</h2>[m
+                 </div>[m
+                  <div className="space-y-16 lg:space-y-32 lg:my-8">[m
+[31m-                     <div className="relative z-10 flex flex-col gap-6 lg:flex-row items-center lg:items-start">[m
+[31m-                         <div className="flex-shrink-0 max-w-md">[m
+[31m-                             <div className="inline-flex items-center rounded border border-yellow-400/20 bg-yellow-400/10 text-yellow-400 p-2.5">[m
+[32m+[m[32m                        <div className="relative z-10 flex flex-col gap-8 lg:flex-row items-center lg:items-start">[m
+[32m+[m[32m                            <div className="shrink-0 max-w-md lg:max-w-lg">[m
+[32m+[m[32m                                <div className="inline-flex items-center rounded-sm border border-yellow-400/20 bg-yellow-400/10 text-yellow-400 p-2.5">[m
+                                  <i className="ri-code-s-slash-line size-5"></i>[m
+                              </div>[m
+[31m-                             <h3 className="mt-3 text-xl font-semibold text-foreground">Shared coding environment</h3>[m
+[31m-                             <p className="text-muted-foreground mt-4">Tidewave runs within your actual development environment and can modify any part of your web application. Tidewave also understands your UI and your application lifecycle, making AI development more seamless and efficient.</p>[m
+[32m+[m[32m                                <h3 className="mt-4 text-2xl font-semibold text-foreground">Shared coding environment</h3>[m
+[32m+[m[32m                                <

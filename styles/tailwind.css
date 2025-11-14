@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@source "./index.tsx";
+@source "./App.tsx";
+@source "./components/**/*";
+@source "./pages/**/*";
+
+@theme {
+  /* Color tokens from original index.html */
+  --color-background: oklch(0.306 0.035 258.5); /* #1f2937 */
+  --color-foreground: oklch(0.86 0.01 258.5); /* #d1d5db */
+  --color-card: oklch(0.27 0.025 258.5); /* #161d27 */
+  --color-card-foreground: var(--color-foreground);
+  --color-primary: oklch(0.53 0.23 283.57); /* #5d2de6 */
+  --color-primary-foreground: oklch(0.99 0 0); /* white */
+  --color-secondary: oklch(0.74 0.15 303.42); /* #c084fc, purple-400 */
+  --color-muted: oklch(
+    0.34 0.028 258.5
+  ); /* #2a323c - for subtle backgrounds like hover */
+  --color-muted-foreground: oklch(
+    0.7 0.01 258.5
+  ); /* #9ca3af - for muted text */
+  --color-border: oklch(0.39 0.02 258.5); /* #374151 */
+
+  /* Font configuration */
+  --font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0.306 0.035 258.5; /* #1f2937 */
+    --foreground: 0.86 0.01 258.5; /* #d1d5db */
+    --card: 0.27 0.025 258.5; /* #161d27 */
+    --card-foreground: var(--foreground);
+    --primary: 0.53 0.23 283.57; /* #5d2de6 */
+    --primary-foreground: 0.99 0 0; /* white */
+    --secondary: 0.74 0.15 303.42; /* #c084fc, purple-400 */
+    --muted: 0.34 0.028 258.5; /* #2a323c - for subtle backgrounds like hover */
+    --muted-foreground: 0.7 0.01 258.5; /* #9ca3af - for muted text */
+    --border: 0.39 0.02 258.5; /* #374151 */
+  }
+
+  body {
+    background-color: oklch(var(--background));
+    color: oklch(var(--foreground));
+    font-family: var(--font-sans);
+  }
+}
+
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (width >= 640px) {
+    max-width: 640px;
+  }
+
+  @media (width >= 768px) {
+    max-width: 768px;
+  }
+
+  @media (width >= 1024px) {
+    max-width: 1024px;
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 1280px) {
+    max-width: 1280px;
+    padding-inline: 2rem;
+  }
+
+  @media (width >= 1536px) {
+    max-width: 1536px;
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .animated-text-gradient {
+    background-size: 200% auto;
+    animation: gradient-animation 4s ease-in-out infinite;
+  }
+
+  .bg-hero {
+    background-image: url(https://tidewave.ai/assets/bg-hero-0021c37b738f615309395f877412702b.png);
+    background-position: top;
+    background-repeat: no-repeat;
+  }
+
+  .bg-grainy {
+    background-image: url(https://tidewave.ai/assets/bg-grainy-70b3b381010355a298811e737c37e1b2.png);
+    background-position: 0px 0px;
+    background-size: 300px 300px;
+  }
+
+  /* Video container styles */
+  video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  a {
+    transition: all 0.2s ease-in-out;
+  }
+
+  /* Card hover effects */
+  .hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+}

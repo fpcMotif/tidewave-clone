@@ -53,16 +53,18 @@ const InstallPage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {
 
         setSortedLinks(sorted);
     }, []);
-    
+
     const startingClasses = 'scale-125 opacity-0 blur-sm';
     const finalClasses = 'scale-100 opacity-100 blur-0';
     const transitionClasses = `transition-all duration-1000 ${isStarting ? startingClasses : finalClasses}`;
 
 
     return (
-        <div className="relative">
-            <div className="absolute inset-0 -top-2 h-[1200px] w-full bg-hero [background-size:200%_60%] sm:[background-size:100%_100%] opacity-20"></div>
-            <div className="relative z-10 container mx-auto px-4 pt-28 pb-8">
+        <div className="min-h-screen w-full">
+            <div className="relative w-full">
+                <div className="absolute inset-0 -top-2 h-[1200px] w-full bg-hero [background-size:200%_60%] sm:[background-size:100%_100%] opacity-20"></div>
+                <div className="relative z-10 w-full">
+                    <div className="container mx-auto px-4 pt-28 pb-8">
                 <div className="flex flex-col items-center">
                     <div className={`mt-8 max-w-[700px] ${transitionClasses}`}>
                         <p className="text-center text-2xl leading-tight font-bold md:text-4xl text-foreground">
@@ -75,12 +77,15 @@ const InstallPage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {
                         </p>
                     </div>
                 </div>
+                    </div>
+                </div>
             </div>
 
-            <div className="relative container mx-auto px-4 py-12">
+            <div className="relative w-full py-12">
+                <div className="container mx-auto px-4">
                 {/* Step 1 */}
-                <div className="card bg-card/70 backdrop-blur-xl border border-card/50 shadow-2xl rounded-2xl max-w-4xl mx-auto">
-                    <div className="p-8">
+                    <div className="bg-card/70 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl max-w-4xl mx-auto overflow-hidden">
+                        <div className="p-6 md:p-8">
                         <div className="flex items-center">
                             <div className="flex items-center justify-center w-8 h-8 rounded-full text-primary-foreground font-bold mr-4 bg-primary">1</div>
                             <h2 className="text-2xl font-bold text-foreground">Install the Tidewave app</h2>
@@ -88,7 +93,7 @@ const InstallPage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {
                         <p className="text-muted-foreground mt-3 inline-block">To get started, download our desktop app:</p>
                         <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
                            {sortedLinks.map(link => (
-                               <a key={link.href} className="flex items-center gap-3 justify-start p-3 border border-border rounded-lg hover:bg-muted/50 transition-colors" href={link.href} target="_blank" rel="noopener noreferrer">
+                               <a key={link.href} className="flex items-center gap-3 justify-start p-3 border border-border rounded-md hover:bg-muted/50 transition-colors" href={link.href} target="_blank" rel="noopener noreferrer">
                                    <link.icon className="size-5 text-foreground/80" /> {link.label}
                                </a>
                            ))}
@@ -100,14 +105,14 @@ const InstallPage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {
                 </div>
 
                 {/* Step 2 */}
-                <div className="card bg-card/70 backdrop-blur-xl border border-card/50 shadow-2xl rounded-2xl max-w-4xl mx-auto mt-12">
-                    <div className="p-8">
+                    <div className="bg-card/70 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl max-w-4xl mx-auto mt-12 overflow-hidden">
+                        <div className="p-6 md:p-8">
                         <div className="flex items-center">
                             <div className="flex items-center justify-center w-8 h-8 rounded-full text-primary-foreground font-bold mr-4 bg-primary">2</div>
                             <h2 className="text-2xl font-bold text-foreground">Connect Tidewave to your web app</h2>
                         </div>
                         <p className="text-muted-foreground mt-3 inline-block">
-                            Open up Tidewave and connect it to your app (typically running on <code className="font-mono bg-muted/80 px-1 py-0.5 rounded text-sm text-foreground/80">localhost</code>).
+                                Open up Tidewave and connect it to your app (typically running on <code className="font-mono bg-muted/80 px-1 py-0.5 rounded-sm text-sm text-foreground/80">localhost</code>).
                             <br/> Then follow the steps for your preferred web framework:
                         </p>
                         <div className="py-8 text-center">
@@ -125,25 +130,26 @@ const InstallPage: React.FC<{ isStarting: boolean }> = ({ isStarting }) => {
                 </div>
 
                 {/* Step 3 */}
-                <div className="card bg-card/70 backdrop-blur-xl border border-card/50 shadow-2xl rounded-2xl max-w-4xl mx-auto mt-12">
-                    <div className="p-8">
+                    <div className="bg-card/70 backdrop-blur-xl border border-border/50 shadow-2xl rounded-2xl max-w-4xl mx-auto mt-12 overflow-hidden">
+                        <div className="p-6 md:p-8">
                         <div className="flex items-center">
                             <div className="flex items-center justify-center w-8 h-8 rounded-full text-primary-foreground font-bold mr-4 bg-primary">3</div>
                             <h2 className="text-2xl font-bold text-foreground">Have fun!</h2>
                         </div>
                         <p className="text-muted-foreground mt-3 inline-block">If you need any help, join our community to get support from the Tidewave team and other developers.</p>
                         <div className="my-8 flex flex-col sm:flex-row gap-4 justify-center">
-                            <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-lg hover:bg-muted/50 transition-colors" href="https://discord.gg/5GhK7E54yA" target="_blank" rel="noopener noreferrer">
+                                <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-md hover:bg-muted/50 transition-colors" href="https://discord.gg/5GhK7E54yA" target="_blank" rel="noopener noreferrer">
                                 <RiDiscordFill className="size-5" /> Join Discord
                             </a>
-                            <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-lg hover:bg-muted/50 transition-colors" href="mailto:support@tidewave.ai" target="_blank" rel="noopener noreferrer">
+                                <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-md hover:bg-muted/50 transition-colors" href="mailto:support@tidewave.ai" target="_blank" rel="noopener noreferrer">
                                 <RiMailLine className="size-5" /> Email support
                             </a>
-                            <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-lg hover:bg-muted/50 transition-colors" href="https://github.com/tidewave-ai" target="_blank" rel="noopener noreferrer">
+                                <a className="flex items-center justify-center gap-3 p-3 border border-border rounded-md hover:bg-muted/50 transition-colors" href="https://github.com/tidewave-ai" target="_blank" rel="noopener noreferrer">
                                 <RiGithubFill className="size-5" /> View on GitHub
                             </a>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

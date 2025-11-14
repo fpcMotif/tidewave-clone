@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     return (
         <div className="relative">
             <div className="bg-grainy absolute inset-0 z-0 opacity-20"></div>
-            <div className="relative z-[2] container mx-auto px-4 pt-8 md:pt-12 xl:pt-16">
+            <div className="relative z-2 container mx-auto px-4 pt-8 md:pt-12 xl:pt-16">
                 <div className="py-16 grid grid-cols-2 gap-12 md:gap-6 md:grid-cols-5">
                     <div className="col-span-2">
                         <p className="text-2xl font-medium text-foreground">Tidewave.</p>
